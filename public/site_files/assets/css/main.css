@@ -1,0 +1,50 @@
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (max-width: 768px) {
+    .call_button
+    {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        z-index: 1000;
+        background-color: #ff0000c9;
+        height: 15vh;
+        width: 10vw;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .call_button span
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .call_button span i
+    {
+        font-size: 4vw;
+        color: #0a0a0a;
+    }
+
+    .call_button span i:hover
+    {
+        color: #0a0a0a;
+    }
+}
+@media (min-width: 768px) {
+    .call_button
+    {
+        display: none;
+    }
+}
