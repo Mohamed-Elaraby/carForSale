@@ -44,6 +44,13 @@
                     <span>{{ __('trans.categories') }}</span>
                 </a>
             </li>
+
+            <li class="active">
+                <a href="{{ route('admin.cars.index') }}">
+                    <i class="fa fa-car"></i>
+                    <span>{{ __('trans.all car') }}</span>
+                </a>
+            </li>
             <!-- Sub Categories Route -->
 {{--            <li class="active">--}}
 {{--                <a href="{{ route('admin.subCategories.index') }}">--}}

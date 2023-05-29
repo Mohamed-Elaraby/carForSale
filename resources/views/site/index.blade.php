@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- ***** Main Banner Area Start ***** -->
-    @include('site.includes.MainBanner')
+{{--    @include('site.includes.MainBanner')--}}
     <!-- ***** Main Banner Area End ***** -->
     @foreach($categories as $category)
         <!-- ***** Men Area Starts ***** -->
@@ -25,13 +25,13 @@
                     <div class="col-lg-12">
                         <div class="men-item-carousel">
                             <div class="owl-men-item owl-carousel">
-                                @foreach($category -> images as $image)
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="{{ asset('storage'.DIRECTORY_SEPARATOR.$image->image_path.DIRECTORY_SEPARATOR.$image->image_name) }}" alt="{{ $image->image_name }}">
-                                    </div>
-                                </div>
-                                @endforeach
+{{--                                @foreach($category -> images as $image)--}}
+{{--                                <div class="item">--}}
+{{--                                    <div class="thumb">--}}
+{{--                                        <img src="{{ asset('storage'.DIRECTORY_SEPARATOR.$image->image_path.DIRECTORY_SEPARATOR.$image->image_name) }}" alt="{{ $image->image_name }}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                     </div>
@@ -54,13 +54,13 @@
 {{--        </div>--}}
         <div class="container">
             <div class="row images">
-                @foreach($shuffle_gallery_images as $image)
-                <div class="col-2">
-                    <div class="thumb">
-                        <img src="{{ asset('storage'.DIRECTORY_SEPARATOR.$image->image_path.DIRECTORY_SEPARATOR.$image->image_name) }}" alt="{{ $image->image_name }}">
-                    </div>
-                </div>
-                @endforeach
+{{--                @foreach($shuffle_gallery_images as $image)--}}
+{{--                <div class="col-2">--}}
+{{--                    <div class="thumb">--}}
+{{--                        <img src="{{ asset('storage'.DIRECTORY_SEPARATOR.$image->image_path.DIRECTORY_SEPARATOR.$image->image_name) }}" alt="{{ $image->image_name }}">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                @endforeach--}}
             </div>
         </div>
     </section>

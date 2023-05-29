@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Car;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Traits\HelperTrait;
@@ -15,15 +16,15 @@ class DropzoneController extends Controller
     {
         if ($request -> ajax())
         {
-            $category_id = $request->category_id;
-            $category = Category::findOrFail($category_id);
-            $category_header_cover = Gallery::where('category_id', $category_id)->getCategoryHeaderCover()->first();
+            $car_id = $request->car_id;
+            $car = Car::findOrFail($car_id);
+            $car_header_cover = Gallery::where('car_id', $car_id)->getCarHeaderCover()->first();
             $header_cover_object = $request->header_cover;
             $header_cover_name = $header_cover_object -> getClientOriginalName();
             $location = $request -> location;
-            $image_data = $this->uploadImageProcessing($header_cover_object, 'categories_cover', $category->name , 'header_cover', 'public', $category_header_cover); // Upload Image With Trait
+            $image_data = $this->uploadImageProcessing($header_cover_object, 'cars_cover', $car->name , 'header_cover', 'public', $car_header_cover); // Upload Image With Trait
 //            dd($image_data);
-            $category -> images()->updateOrCreate(
+            $car -> images()->updateOrCreate(
                 ['location' => $location],
                 $image_data + ['location' => $location]
             );
@@ -34,13 +35,13 @@ class DropzoneController extends Controller
     public function upload(Request $request)
     {
 //        dd($request->all());
-        $category = Category::findOrFail($request->category_id);
+        $car = Car::findOrFail($request->car_id);
 
         $image_source = $request->file('file');
 
-        $image_data = $this->uploadImageProcessing($image_source, 'categories', $category->name, 'gallery', 'public'); // Upload Image With Trait
+        $image_data = $this->uploadImageProcessing($image_source, 'cars', $car->name, 'gallery', 'public'); // Upload Image With Trait
 
-        $category -> images()->create($image_data);
+        $car -> images()->create($image_data);
 
         return response()-> json(['message' => 'success'], 200);
 

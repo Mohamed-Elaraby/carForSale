@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\SubCategory;
+namespace App\Http\Requests\Car;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddAndUpdateSubCategoryRequest extends FormRequest
+class AddAndUpdateCarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class AddAndUpdateSubCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-//            'car_id' => 'required',
+            'name' => 'required'
         ];
     }
 }

@@ -21,13 +21,18 @@ class Category extends Model
     {
         return nl2br($value);
     }
-    public function images()
-    {
-        return $this->hasMany(Gallery::class);
-    }
+//    public function images()
+//    {
+//        return $this->hasMany(Gallery::class);
+//    }
 
     public function subCategories()
     {
         return $this->hasMany(SubCategories::class);
+    }
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
     }
 }

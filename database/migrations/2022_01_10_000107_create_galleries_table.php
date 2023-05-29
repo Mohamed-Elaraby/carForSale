@@ -18,7 +18,7 @@ class CreateGalleriesTable extends Migration
             $table->string('image_name');
             $table->string('image_path');
             $table->string('location')->nullable();
-            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->bigInteger('car_id')->unsigned()->nullable();
 //            $table->bigInteger('home_id')->unsigned()->nullable();
             $table->timestamps();
         });

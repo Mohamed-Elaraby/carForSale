@@ -13,9 +13,9 @@ class Gallery extends Model
         return $query -> where('location', 'home_slideShow');
     }
 
-    public function scopeGetCategoryHeaderCover($query)
+    public function scopeGetCarHeaderCover($query)
     {
-        return $query -> where('location', 'category_header_cover');
+        return $query -> where('location', 'car_header_cover');
     }
 //    protected $appends = ['image_full_path'];
 //
@@ -29,8 +29,8 @@ class Gallery extends Model
         return $this->belongsTo(Home::class);
     }
 
-    public function category()
+    public function car()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Car::class);
     }
 }

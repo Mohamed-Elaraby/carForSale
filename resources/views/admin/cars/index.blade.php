@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', __('trans.all categories list'))
+@section('title', __('trans.all car'))
 
 @section('content')
     <div class="row">
@@ -21,15 +21,17 @@
                 <div class="card-header" style="margin: 20px 0">
                     <div class="row">
                         <div class="col-xs-9">
-                            <h4 style="margin: 0; padding: 0; display: inline">{{ __('trans.all categories list') }}</h4>
+                            <h4 style="margin: 0; padding: 0; display: inline">{{ __('trans.all car') }}</h4>
                         </div>
                         <div class="col-xs-3">
-                                <a href="{{ route('admin.categories.create') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> {{ __('trans.create') }}</a>
+                                <a href="{{ route('admin.cars.create') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> {{ __('trans.create') }}</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <form class="form-inline" style=" text-align: center; margin-top: 20px">
+                            <form method="post" action="{{ route('admin.cars.create') }}" class="form-inline" style=" text-align: center; margin-top: 20px">
+                                @csrf
+
                                 <div class="form-group">
                                     <input type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off" >
                                 </div>

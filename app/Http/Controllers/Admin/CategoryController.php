@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        $header_cover = Gallery::where('category_id', $id)->getCategoryHeaderCover()->first();
+        $header_cover = Gallery::where('car_id', $id)->getCarHeaderCover()->first();
         return view('admin.categories.edit',compact('category', 'header_cover'));
     }
 
@@ -58,14 +58,14 @@ class CategoryController extends Controller
         return redirect()->back()->with('delete', __('trans.category delete successfully'));
     }
 
-    public function get_category_images(Request $request)
-    {
-        if ($request -> ajax())
-        {
-            $category_id = $request->category_id;
-            $images = Gallery::where('category_id', $category_id)->whereNull('location')->get();
-            return response() -> json(['images' => $images], 200);
-        }
-    }
+//    public function get_category_images(Request $request)
+//    {
+//        if ($request -> ajax())
+//        {
+//            $category_id = $request->category_id;
+//            $images = Gallery::where('category_id', $category_id)->whereNull('location')->get();
+//            return response() -> json(['images' => $images], 200);
+//        }
+//    }
 
 }

@@ -35,7 +35,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->
     Route::get('get_slideShow_images', 'HomeController@get_slideShow_images')->name('home.get_slideShow_images');
     Route::get('setting', 'SettingController@index')->name('setting.index');
     Route::post('setting/update', 'SettingController@update')->name('setting.update');
-    Route::get('get_category_images', 'CategoryController@get_category_images')->name('category.get_category_images');
+    Route::get('get_car_images', 'CarController@get_car_images')->name('car.get_car_images');
+    Route::get('get_car_header_cover', 'CarController@get_car_header_cover')->name('car.get_car_header_cover');
     Route::post('upload_header_cover', 'DropzoneController@upload_header_cover')->name('dropzone.upload_header_cover');
     Route::post('upload', 'DropzoneController@upload')->name('dropzone.upload');
     Route::post('destroy/{id}', 'DropzoneController@destroy')->name('dropzone.destroy');
@@ -43,6 +44,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->
 
     Route::resources([
         'users'                     => 'UserController',
+        'cars'                      => 'CarController',
         'categories'                => 'CategoryController',
         'subCategories'             => 'SubCategoryController',
     ]); // end of resources

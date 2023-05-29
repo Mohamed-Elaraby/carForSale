@@ -191,6 +191,7 @@ trait HelperTrait
                 $image = Image::make($_photoName);
 //                $image -> resize($this -> image_width, $this -> image_height);
                 $image -> save(public_path('storage' .DIRECTORY_SEPARATOR. $this -> image_path.DIRECTORY_SEPARATOR.$this -> image_name));
+//                dd(55);
 
             }
 
