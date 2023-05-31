@@ -7,135 +7,185 @@
 @section('title', ' تعديل سيارة '.$car -> name)
 
 @section('content')
-        <div class="row">
-            <div class="col-xs-12 center-block" style="float: none">
-                <div class="card card-primary mt-5">
-                    <div class="error_messages">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="card-header">
-                        <h3 class="text-center"><i class="fa fa-pencil"></i> تعديل سيارة {{ $car->name }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div id="page_header_cover"></div>
-{{--                            @if ($header_cover)--}}
-{{--                                <div class="text-center">--}}
-{{--                                    <img class="img-thumbnail" id="imagePreview" src="{{ asset('storage/'.$header_cover->image_path.DIRECTORY_SEPARATOR.$header_cover->image_name) }}" width="900px">--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 center-block" style="float: none">
+                    <div class="card card-primary mt-5">
+                        <div class="error_messages">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
-                        <label for="header_cover" class="custom-file-upload form-control">
+                        <div class="card-header">
+                            <h3 class="text-center"><i class="fa fa-pencil"></i> تعديل سيارة {{ $car->name }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div id="page_header_cover"></div>
+                                {{--                            @if ($header_cover)--}}
+                                {{--                                <div class="text-center">--}}
+                                {{--                                    <img class="img-thumbnail" id="imagePreview" src="{{ asset('storage/'.$header_cover->image_path.DIRECTORY_SEPARATOR.$header_cover->image_name) }}" width="900px">--}}
+                                {{--                                </div>--}}
+                                {{--                            @endif--}}
+
+                            </div>
+                            <label for="header_cover" class="custom-file-upload form-control">
                             <span class="upload_text">
                                 <i class="fa fa-cloud-upload"></i>{{ $header_cover ? ' تعديل صورة الغلاف ' : ' رفع صورة الغلاف' }}
                             </span>
-                        </label>
-                        <input type="file" data-location="car_header_cover" name="header_cover" id="header_cover" style="display: none">
-                        <span class="image_dimensions_asterisk">
+                            </label>
+                            <input type="file" data-location="car_header_cover" name="header_cover" id="header_cover" style="display: none">
+                            <span class="image_dimensions_asterisk">
                             <strong>*</strong>
                             يجب ان تكون ابعاد الصورة [العرض : 1600px , الطول : 500px ]
                         </span>
+                            <hr>
+                            <h4 class="text-center">{{ __('trans.car information') }}</h4>
+                            {!! Form::open(['route' => ['admin.cars.update', $car -> id], 'method' => 'put', 'id' => 'myForm']) !!}
+                            <div class="form-group">
+                                {!! Form::label('name', __('trans.car name'), ['class' => 'control-label']) !!}
+                                {!! Form::text('name', $car -> name, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('manufacturing_year', __('trans.manufacturing year'), ['class' => 'control-label']) !!}
+                                {!! Form::select('manufacturing_year', $manufacturing_years,$car -> manufacturing_year, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                @php($manufacturing_countries = ['وارد امريكى' => 'وارد امريكى', 'وارد يابانى' => 'وارد يابانى', 'وارد كورى' => 'وارد كورى', 'خليجى' => 'خليجى', 'ناغى' => 'ناغى'])
+                                {!! Form::label('manufacturing_country', __('trans.manufacturing country'), ['class' => 'control-label']) !!}
+                                {!! Form::select('manufacturing_country', $manufacturing_countries, $car -> manufacturing_country, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('kilometers', __('trans.kilometers'), ['class' => 'control-label']) !!}
+                                {!! Form::text('kilometers', $car -> kilometers, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('warranty', __('trans.warranty'), ['class' => 'control-label']) !!}
+                                <label>
+                                    {!! Form::radio('warranty_status', 1, $car -> warranty ? 'checked' : '',  ['class' => 'warranty_status']) !!}
+                                    ضمان
+                                    {!! Form::radio('warranty_status', 0, $car -> warranty == 'بدون ضمان' ? 'checked' : '',  ['class' => 'warranty_status']) !!}
+                                    بدون ضمان
+                                </label>
+                                {!! Form::text('warranty', $car -> warranty, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('inside_color', __('trans.inside color'), ['class' => 'control-label']) !!}
+                                {!! Form::text('inside_color', $car -> inside_color, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('outside_color', __('trans.outside color'), ['class' => 'control-label']) !!}
+                                {!! Form::text('outside_color', $car -> outside_color, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('rim_size', __('trans.rim size'), ['class' => 'control-label']) !!}
+                                {!! Form::text('rim_size', $car -> rim_size, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('body_status', __('trans.body status'), ['class' => 'control-label']) !!}
+                                {!! Form::text('body_status', $car -> body_status, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('gear_status', __('trans.gear status'), ['class' => 'control-label']) !!}
+                                {!! Form::text('gear_status', $car -> gear_status, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('engine_status', __('trans.engine status'), ['class' => 'control-label']) !!}
+                                {!! Form::text('engine_status', $car -> engine_status, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('keys_count', __('trans.keys count'), ['class' => 'control-label']) !!}
+                                {!! Form::text('keys_count', $car -> keys_count, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('hours_count', __('trans.hours count'), ['class' => 'control-label']) !!}
+                                {!! Form::text('hours_count', $car -> hours_count, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('gear_box', __('trans.gear box'), ['class' => 'control-label']) !!}
+                                {!! Form::select('gear_box',['Manual' => 'Manual', 'Automatic' => 'Automatic', 'Automatic 6 Speed' => 'Automatic 6 Speed', 'Automatic 8 Speed ' => 'Automatic 8 Speed '], $car -> gear_box, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('fuel', __('trans.fuel'), ['class' => 'control-label']) !!}
+                                {!! Form::select('fuel', ['petrol' => 'petrol', 'diesel' => 'diesel', 'electric' => 'electric', 'hybrid ' => 'hybrid '], $car -> fuel, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('engine_size', __('trans.engine size'), ['class' => 'control-label']) !!}
+                                {!! Form::text('engine_size', $car -> engine_size, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('type', __('trans.type'), ['class' => 'control-label']) !!}
+                                {!! Form::text('type', $car -> type, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('code', __('trans.code'), ['class' => 'control-label']) !!}
+                                {!! Form::text('code', $car -> code, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('status', __('trans.status'), ['class' => 'control-label']) !!}
+                                {!! Form::select('status', ['' => '', 'متاحة' => 'متاحة', 'محجوزة' => 'محجوزة', 'مباعة' => 'مباعة'], $car -> status, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('price', __('trans.price'), ['class' => 'control-label']) !!}
+                                {!! Form::text('price', $car -> price, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('price_status', __('trans.price status'), ['class' => 'control-label']) !!}
+                                {!! Form::select('price_status', [''=> '', 'قابل للتفاوض' => 'قابل للتفاوض', 'غير قابل للتفاوض' => 'غير قابل للتفاوض'], $car -> price_status,['class' => 'form-control']) !!}
+                            </div>
 
-                        {!! Form::open(['route' => ['admin.cars.update', $car -> id], 'method' => 'put', 'id' => 'myForm']) !!}
+                            <div class="form-group">
+                                {!! Form::label('status', __('trans.status'), ['class' => 'control-label']) !!}
+                                {!! Form::select('status', ['' => '', 'متاحة' => 'متاحة', 'محجوزة' => 'محجوزة', 'مباعة' => 'مباعة'], $car -> status,['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('category_id', __('trans.category'), ['class' => 'control-label']) !!}
+                                {!! Form::select('category_id', $categories, $car -> category_id, ['class' => 'form-control']) !!}
+                            </div>
 
-                        <div class="form-group">
-                            {!! Form::label('name', __('trans.car name'), ['class' => 'control-label']) !!}
-                            {!! Form::text('name', $car -> name, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('manufacturing_year', __('trans.manufacturing year'), ['class' => 'control-label']) !!}
-                            {!! Form::select('manufacturing_year', $manufacturing_years,$car -> manufacturing_year, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('manufacturing_country', __('trans.manufacturing country'), ['class' => 'control-label']) !!}
-                            {!! Form::text('manufacturing_country', $car -> manufacturing_country, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('kilometers', __('trans.kilometers'), ['class' => 'control-label']) !!}
-                            {!! Form::text('kilometers', $car -> kilometers, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('warranty', __('trans.warranty'), ['class' => 'control-label']) !!}
-                            <label>
-                                {!! Form::radio('warranty_status', 1, $car -> warranty ? 'checked' : '',  ['class' => 'warranty_status']) !!}
-                                ضمان
-                                {!! Form::radio('warranty_status', 0, $car -> warranty == 'بدون ضمان' ? 'checked' : '',  ['class' => 'warranty_status']) !!}
-                                بدون ضمان
-                            </label>
-                            {!! Form::text('warranty', $car -> warranty, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('color', __('trans.color'), ['class' => 'control-label']) !!}
-                            {!! Form::text('color', $car -> color, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('gear_box', __('trans.gear box'), ['class' => 'control-label']) !!}
-                            {!! Form::select('gear_box',['Manual' => 'Manual', 'Automatic' => 'Automatic'], $car -> gear_box, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('fuel', __('trans.fuel'), ['class' => 'control-label']) !!}
-                            {!! Form::select('fuel', ['petrol' => 'petrol', 'diesel' => 'diesel', 'electric' => 'electric', 'hybrid ' => 'hybrid '], $car -> fuel, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('engine_size', __('trans.engine size'), ['class' => 'control-label']) !!}
-                            {!! Form::text('engine_size', $car -> engine_size, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('type', __('trans.type'), ['class' => 'control-label']) !!}
-                            {!! Form::text('type', $car -> type, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('code', __('trans.code'), ['class' => 'control-label']) !!}
-                            {!! Form::text('code', $car -> code, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('status', __('trans.status'), ['class' => 'control-label']) !!}
-                            {!! Form::select('status', ['' => '', 'متاحة' => 'متاحة', 'محجوزة' => 'محجوزة', 'مباعة' => 'مباعة'], $car -> status, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('price', __('trans.price'), ['class' => 'control-label']) !!}
-                            {!! Form::text('price', $car -> price, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('price_status', __('trans.price status'), ['class' => 'control-label']) !!}
-                            {!! Form::select('price_status', [''=> '', 'قابل للتفاوض' => 'قابل للتفاوض', 'غير قابل للتفاوض' => 'غير قابل للتفاوض'], $car -> price_status,['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('category_id', __('trans.category'), ['class' => 'control-label']) !!}
-                            {!! Form::select('category_id', $categories, $car -> category_id, ['class' => 'form-control']) !!}
-                        </div>
-                        {!! Form::close() !!}
+                            <hr>
+                            <h4 class="text-center">{{ __('trans.car specifications') }}</h4>
+                            <div class="row">
+                                @foreach($specifications as $specification)
+                                    <div class="col-md-3">
+                                        <input type="checkbox" id="{{ $specification -> id }}" class="car_specification" {{ in_array($specification -> id, $selected_specifications) ? 'checked': '' }}> {{ $specification -> name }}
+                                    </div>
+                                @endforeach
+                            </div>
 
+
+                            {!! Form::close() !!}
+
+                            <hr>
+                            <h4 class="text-center">{{ __('trans.car images') }}</h4>
                             <div style="margin: 20px 0">
                                 <div class="row">
                                     <div id="show_images_area"></div>
                                 </div>
                             </div>
-                        <div class="col-md-12">
-                            <div  style="width: 100%; margin: 0 auto">
-                                <div class="form-inline" style="text-align: center">
-                                    <form style="width: 100%" action="{{ route('admin.dropzone.upload') }}" class="dropzone" id="my_dropzone_form">@csrf
-                                        <input type="hidden" name="car_id" value="{{ $car->id }}">
-                                        <div class="dz-message" data-dz-message><span>اضغط او اسحب الملفات هنا</span></div>
-                                    </form>
-                                    <span class="image_dimensions_asterisk">
+                            <div class="col-md-12">
+                                <div  style="width: 100%; margin: 0 auto">
+                                    <div class="form-inline" style="text-align: center">
+                                        <form style="width: 100%" action="{{ route('admin.dropzone.upload') }}" class="dropzone" id="my_dropzone_form">@csrf
+                                            <input type="hidden" name="car_id" value="{{ $car->id }}">
+                                            <div class="dz-message" data-dz-message><span>اضغط او اسحب الملفات هنا</span></div>
+                                        </form>
+                                        <span class="image_dimensions_asterisk">
                                         <strong>*</strong>
                                         يجب ان تكون ابعاد الصور [العرض : 1600px , الطول : 1200px ]
                                     </span>
-                                    <br>
-                                    <button class="btn btn-success form-control" id="upload">حفظ التعديلات</button>
+                                        <br>
+                                        <button class="btn btn-success form-control" id="upload">حفظ التعديلات</button>
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,6 +218,28 @@
     @include('admin.includes.imagePreviewJQueryCode')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).on('change', '.car_specification', function () {
+            let specification_id = $(this).attr('id');
+            let car_id = '{{ $car->id }}';
+            let specification_status = $(this).prop('checked');
+            let url = '{{ route('admin.car.syncSpecificationsCar') }}';
+            $.ajax({
+                url: url,
+                method: 'get',
+                data: {specification_status: specification_status, specification_id: specification_id, car_id: car_id},
+                success: function (data) {
+                    Swal.fire({
+                        position: 'top-start',
+                        icon: 'success',
+                        title: 'تم الحفظ',
+                        showConfirmButton: false,
+                        timer: 250
+                    })
+                }
+            });
+        });
+    </script>
     <script>
         $(document).on('change', '.warranty_status', function () {
             let warranty_status = $(this).val();

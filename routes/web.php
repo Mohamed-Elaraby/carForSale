@@ -21,5 +21,6 @@
 
 Route::namespace('Site')->name('site.')->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('car/show/{id}', 'CarController@show')->name('car.show');
     Route::get('category/{id}', 'CategoryController@index')->name('category');
 });

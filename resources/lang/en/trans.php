@@ -55,6 +55,14 @@ return [
     'edit homePage'                                                                 => ucwords('edit homePage'),
     'goto the site'                                                                 => ucwords('goto the site'),
     'color'                                                                         => ucwords('color'),
+    'inside color'                                                                  => ucwords('inside color'),
+    'outside color'                                                                 => ucwords('outside color'),
+    'rim size'                                                                      => ucwords('rim size'),
+    'body status'                                                                   => ucwords('body status'),
+    'gear status'                                                                   => ucwords('gear status'),
+    'engine status'                                                                 => ucwords('engine status'),
+    'keys count'                                                                    => ucwords('keys count'),
+    'hours count'                                                                   => ucwords('hours count'),
     'image'                                                                         => ucwords('image'),
     'file'                                                                          => ucwords('file'),
     'file type'                                                                     => ucwords('file type'),
@@ -215,6 +223,9 @@ return [
     'car delete successfully'                                                       => ucwords('car delete successfully'),
     'transfer car ownership'                                                        => ucwords('transfer car ownership'),
     'transfer car ownership successfully'                                           => ucwords('transfer car ownership successfully'),
+    'car information'                                                               => ucwords('car information'),
+    'car specifications'                                                            => ucwords('car specifications'),
+    'car images'                                                                    => ucwords('car images'),
 
 
     // Supplier Translations
@@ -274,6 +285,21 @@ return [
     'category added successfully'                                                   => ucwords('category added successfully'),
     'category edit successfully'                                                    => ucwords('category edit successfully'),
     'category delete successfully'                                                  => ucwords('category delete successfully'),
+
+
+    // Categories Translations
+    'all specifications list'                                                       => ucwords('all specifications list'),
+    'specification name'                                                            => ucwords('specification name'),
+    'specification description'                                                     => ucwords('specification description'),
+    'all specifications'                                                            => ucwords('all specifications'),
+    'create specification'                                                          => ucwords('create specification'),
+    'edit specification'                                                            => ucwords('edit specification'),
+    'delete specification'                                                          => ucwords('delete specification'),
+    'specification'                                                                 => ucwords('specification'),
+    'specifications'                                                                => ucwords('specifications'),
+    'specification added successfully'                                              => ucwords('specification added successfully'),
+    'specification edit successfully'                                               => ucwords('specification edit successfully'),
+    'specification delete successfully'                                             => ucwords('specification delete successfully'),
 
 
     ];

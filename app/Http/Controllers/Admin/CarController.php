@@ -9,6 +9,8 @@ use App\Models\Car;
 use App\Models\Category;
 use App\Models\File;
 use App\Models\Gallery;
+use App\Models\relation_car_specification;
+use App\Models\Specification;
 use App\Traits\HelperTrait;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -52,19 +54,18 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $header_cover = Gallery::where('car_id', $id)->getCarHeaderCover()->first();
         $categories = Category::pluck('name', 'id')->toArray();
-
+        $specifications = Specification::all();
         $manufacturing_years = [];
         for ($x = 1990; $x <= Carbon::now()->year; $x++) {
             $manufacturing_years[$x] = $x;
         }
         $manufacturing_years = array_reverse($manufacturing_years, true);
-        return view('admin.cars.edit', compact('car', 'header_cover', 'categories', 'manufacturing_years'));
-//        return view('admin.cars.edit',compact('car', 'header_cover'));
+        $selected_specifications = relation_car_specification::where('car_id', $car->id)->pluck('specification_id')->toArray();
+        return view('admin.cars.edit', compact('car', 'header_cover', 'categories', 'specifications', 'manufacturing_years', 'selected_specifications'));
     }
 
     public function update(AddAndUpdateCarRequest $request, $id)
     {
-//        dd($request->all());
         $car = Car::findOrFail($id);
         $car->update($request -> except('warranty_status'));
         return response()-> json('success', 200);
@@ -93,6 +94,26 @@ class CarController extends Controller
             $car_id = $request->car_id;
             $header_cover = Gallery::where(['car_id' => $car_id, 'location' => 'car_header_cover'])->first();
             return response() -> json(['header_cover' => $header_cover], 200);
+        }
+    }
+
+    public function syncSpecificationsCar(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $specification_status = $request->specification_status;
+            $specification_id = $request->specification_id;
+            $car_id = $request->car_id;
+            $car = Car::findOrFail($car_id);
+            if ($specification_status == "true")
+            {
+                $car -> specifications()->syncWithoutDetaching($specification_id);
+            }
+            else
+            {
+                $car -> specifications()->detach($specification_id);
+            }
+            return response()->json('success', 200);
         }
     }
 }

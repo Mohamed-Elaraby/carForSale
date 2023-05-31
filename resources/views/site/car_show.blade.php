@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div id="car_image" class="slider-pro">
+    <div id="demo" class="slider-pro">
         <div class="sp-slides">
             @if ($gallery -> count() > 0)
                 @foreach($gallery as $image)
@@ -27,26 +27,41 @@
         </div>
     </div>
 
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>{{ $category->name }}</h2>
+                        <span>{!! $category->description !!}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+
 @endsection
 @push('links')
     <link rel="stylesheet" href={{ asset('assets/slider/dist/css/slider-pro.min.css') }} />
 @endpush
 
 @push('scripts')
-{{--    <script>--}}
-{{--        let category_id = '{{ $category -> id }}';--}}
-{{--        @if (\Request::segment(2) == $category -> id)--}}
-{{--        $('.home_link').removeClass('active');--}}
-{{--        $('.category_link_' + category_id).addClass('active');--}}
-{{--        @endif--}}
-{{--    </script>--}}
+    <script>
+        let category_id = '{{ $category -> id }}';
+        @if (\Request::segment(2) == $category -> id)
+        $('.home_link').removeClass('active');
+        $('.category_link_' + category_id).addClass('active');
+        @endif
+    </script>
     <!-- jQuery Version -->
 
     {{--<script src="http://code.jquery.com/jquery.min.js"></script>--}}
     <script src={{ asset('assets/slider/dist/js/jquery.sliderPro.min.js') }}></script>
     <script>
         // jQuery Version
-        $('#car_image').sliderPro({
+        $('#demo').sliderPro({
             width: 1600,
             height: 1200,
             responsive:true,
@@ -67,7 +82,7 @@
             fade: 'false',
             fadeOutPreviousSlide: true,
             fadeDuration: 500,
-            autoplay: true,
+            autoplay: false,
             autoplayDelay: 3000,
             autoplayDirection: 'normal',
             autoplayOnHover: 'pause',

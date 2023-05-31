@@ -20,7 +20,14 @@ class CreateCarsTable extends Migration
             $table->string('manufacturing_country');
             $table->string('kilometers');
             $table->string('warranty')->default('بدون ضمان');
-            $table->string('color');
+            $table->string('inside_color');
+            $table->string('outside_color');
+            $table->string('rim_size');
+            $table->string('body_status');
+            $table->string('gear_status');
+            $table->string('engine_status');
+            $table->string('keys_count');
+            $table->string('hours_count');
             $table->enum('gear_box', ['Manual', 'Automatic']);
             $table->enum('fuel', ['petrol', 'diesel', 'electric', 'hybrid ']);
             $table->string('engine_size');
@@ -29,7 +36,7 @@ class CreateCarsTable extends Migration
             $table->string('price');
             $table->enum('price_status', ['قابل للتفاوض', 'غير قابل للتفاوض']);
             $table->enum('status', ['متاحة', 'محجوزة', 'مباعة'])->default('متاحة');
-            $table->bigInteger('category_id');
+            $table->bigInteger('category_id')->unsigned();
             $table->timestamps();
         });
     }

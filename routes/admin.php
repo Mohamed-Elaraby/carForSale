@@ -41,10 +41,12 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->
     Route::post('upload', 'DropzoneController@upload')->name('dropzone.upload');
     Route::post('destroy/{id}', 'DropzoneController@destroy')->name('dropzone.destroy');
     Route::post('home_slideShow/upload', 'DropzoneController@home_slideShow_upload')->name('home.slideShow.upload');
+    Route::get('syncSpecificationsCar', 'CarController@syncSpecificationsCar')->name('car.syncSpecificationsCar');
 
     Route::resources([
         'users'                     => 'UserController',
         'cars'                      => 'CarController',
+        'specifications'            => 'SpecificationController',
         'categories'                => 'CategoryController',
         'subCategories'             => 'SubCategoryController',
     ]); // end of resources

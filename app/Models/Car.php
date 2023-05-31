@@ -17,4 +17,9 @@ class Car extends Model
     {
         return $this->hasMany(Gallery::class);
     }
+
+    public function specifications()
+    {
+        return $this -> belongsToMany(Specification::class, 'relation_car_specifications', 'car_id', 'specification_id');
+    }
 }

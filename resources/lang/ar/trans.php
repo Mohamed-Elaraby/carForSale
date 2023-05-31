@@ -56,8 +56,16 @@ return [
     'description'                                                                   => 'الوصف',
     'home'                                                                          => 'الصفحة الرئيسية',
     'edit homePage'                                                                 => 'تعديل الصفحة الرئيسية',
-    'goto the site'                                                             => 'الذهاب الى الموقع',
+    'goto the site'                                                                 => 'الذهاب الى الموقع',
     'color'                                                                         => 'اللون',
+    'inside color'                                                                  => 'اللون الداخلى',
+    'outside color'                                                                 => 'اللون الخارجى',
+    'rim size'                                                                      => 'مقاس الجنط',
+    'body status'                                                                   => 'حالة البودى',
+    'gear status'                                                                   => 'حالة الجير',
+    'engine status'                                                                 => 'حالة الماكينة',
+    'keys count'                                                                    => 'عدد المفاتيح',
+    'hours count'                                                                   => 'عدد الاحصنة',
     'image'                                                                         => 'صورة',
     'file'                                                                          => 'ملف',
     'file type'                                                                     => 'نوع الملف',
@@ -139,7 +147,7 @@ return [
     'postal code'                                                                   => 'الرمز البريدى',
     'vat number'                                                                    => 'رقم السجل الضريبى',
     'manufacturing year'                                                            => 'سنة الصنع',
-    'manufacturing country'                                                         => 'مصدر السيارة',
+    'manufacturing country'                                                         => 'المواصفات الاقليمية',
     'kilometers'                                                                    => 'الكيلومترات',
     'warranty'                                                                      => 'حالة الضمان',
     'gear box'                                                                      => 'ناقل الحركة',
@@ -189,6 +197,9 @@ return [
     'car delete successfully'                                                       => 'تم حذف السيارة بنجاح',
     'transfer car ownership'                                                        => 'نقل ملكية السيارة',
     'transfer car ownership successfully'                                           => 'تم نقل ملكية السيارة بنجاح',
+    'car information'                                                               => 'بيانات السيارة',
+    'car specifications'                                                            => 'مواصفات السيارة',
+    'car images'                                                                    => 'صور السيارة',
 
 
     // Client Payments Translations
@@ -276,6 +287,20 @@ return [
     'category added successfully'                                                   => 'تم إضافة القسم بنجاح',
     'category edit successfully'                                                    => 'تم تعديل القسم بنجاح',
     'category delete successfully'                                                  => 'تم حذف القسم بنجاح',
+
+    // Categories Translations
+    'all specifications list'                                                        => 'قائمة جميع المميزات',
+    'specification name'                                                             => 'إسم المواصفة',
+    'specification description'                                                      => 'وصف المواصفة',
+    'all specifications'                                                             => 'جميع المميزات',
+    'create specification'                                                           => 'إنشاء ميزة',
+    'edit specification'                                                             => 'تعديل ميزة',
+    'delete specification'                                                           => 'حذف ميزة',
+    'specification'                                                                  => 'ميزة',
+    'specifications'                                                                 => 'المميزات',
+    'specification added successfully'                                               => 'تم إضافة الميزة بنجاح',
+    'specification edit successfully'                                                => 'تم تعديل الميزة بنجاح',
+    'specification delete successfully'                                              => 'تم حذف الميزة بنجاح',
 
 
     ];
