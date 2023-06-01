@@ -157,6 +157,7 @@ return [
     'code'                                                                          => 'كود السيارة',
     'status'                                                                        => 'الحالة',
     'price'                                                                         => 'السعر',
+    'currency'                                                                      => 'العملة',
 
     // Setting
     'setting'                                                                       => 'الاعدادات',
@@ -191,6 +192,7 @@ return [
     'edit car'                                                                      => 'تعديل سيارة',
     'delete car'                                                                    => 'حذف سيارة',
     'car'                                                                           => 'سيارة',
+    'the car'                                                                       => 'السيارة',
     'car checks'                                                                    => 'فحوصات السيارة',
     'car added successfully'                                                        => 'تم إضافة السيارة بنجاح',
     'car edit successfully'                                                         => 'تم تعديل السيارة بنجاح',

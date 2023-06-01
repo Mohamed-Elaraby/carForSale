@@ -12,8 +12,10 @@ class CategoryController extends Controller
     public function index($id)
     {
         $category = Category::findOrFail($id);
-        $gallery = Gallery::where('car_id', $id)->whereNull('location')->get();
-//        $header_cover = Gallery::where('car_id', $id)->getCategoryHeaderCover()->first();
-        return view('site.category', compact('category', 'gallery'));
+        $header_cover = Gallery::with('car')->whereHas('car', function ($q) use ($category){
+            $q -> where('status', '!=', 'مباعة');
+            $q -> where('category_id', $category -> id);
+        })->where('location', 'car_header_cover')->paginate(15);
+        return view('site.category', compact('category', 'header_cover'));
     }
 }

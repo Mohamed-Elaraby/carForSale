@@ -19,6 +19,7 @@ class CreateSettingsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->longText('keywords')->nullable();
+            $table->string('currency')->nullable();
         });
     }
 

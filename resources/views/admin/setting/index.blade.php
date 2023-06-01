@@ -49,6 +49,10 @@
                         {!! Form::textarea('keywords', $setting? $setting -> keywords: null, ['class' => 'form-control', 'placeholder' => 'اكتب الكلمات المفتاحية متبوعة بفاصلة مثل keyword2, keyword1, ....']) !!}
                     </div>
                     <div class="form-group">
+                        {!! Form::label('currency', __('trans.currency'), ['class' => 'control-label']) !!}
+                        {!! Form::select('currency', ['ريال سعودى' => 'ريال سعودى', 'درهم اماراتى' => 'درهم اماراتى', 'دولار امريكى' => 'دولار امريكى', ],$setting ? $setting -> currency: null , ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         {!! Form::submit(__('trans.save edits'), ['class' => 'form-control btn btn-success']) !!}
                     </div>
                     {!! Form::close() !!}

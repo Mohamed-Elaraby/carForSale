@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $header_cover = Gallery::with('car')->whereHas('car', function ($q){
             $q -> where('status', '!=', 'مباعة');
-        })->where('location', 'car_header_cover')->get();
+        })->where('location', 'car_header_cover')->paginate(15);
         return view('site.index', compact('header_cover'));
     }
 }

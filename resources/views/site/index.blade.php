@@ -21,6 +21,9 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
+                    {{ $header_cover -> links() }}
+                </div>
             </div>
         </section>
         <!-- ***** Men Area Ends ***** -->

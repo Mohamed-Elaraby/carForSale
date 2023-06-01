@@ -154,6 +154,7 @@ return [
     'code'                                                                          => ucwords('code'),
     'status'                                                                        => ucwords('status'),
     'price'                                                                         => ucwords('price'),
+    'currency'                                                                      => ucwords('currency'),
 
     // Setting
     'setting'                                                                       => ucwords('setting'),
@@ -217,6 +218,7 @@ return [
     'edit car'                                                                      => ucwords('edit car'),
     'delete car'                                                                    => ucwords('delete car'),
     'car'                                                                           => ucwords('car'),
+    'the car'                                                                       => ucwords('the car'),
     'car checks'                                                                    => ucwords('car checks'),
     'car added successfully'                                                        => ucwords('car added successfully'),
     'car edit successfully'                                                         => ucwords('car edit successfully'),

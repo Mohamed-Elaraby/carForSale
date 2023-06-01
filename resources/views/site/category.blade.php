@@ -5,43 +5,30 @@
 @section('content')
 
 
-    <div id="demo" class="slider-pro">
-        <div class="sp-slides">
-            @if ($gallery -> count() > 0)
-                @foreach($gallery as $image)
-                  <div class="sp-slide"><img class="sp-image" src=" {{ asset('storage' . DIRECTORY_SEPARATOR . $image->image_path . DIRECTORY_SEPARATOR . $image->image_name) }}" alt=""></div>
-                @endforeach
-            @else
-                <p class="text-center">لا يوجد صور لهذه الصفحة</p>
-            @endif
-        </div>
-
-        <div class="sp-thumbnails">
-            @if ($gallery -> count() > 0)
-                @foreach($gallery as $image)
-                    <img class="sp-thumbnail" src="{{ asset('storage' . DIRECTORY_SEPARATOR . $image->image_path . DIRECTORY_SEPARATOR . $image->image_name) }}"/>
-                @endforeach
-            @else
-                <p class="text-center">لا يوجد صور لهذه الصفحة</p>
-            @endif
-        </div>
-    </div>
-
-    <!-- ***** Products Area Starts ***** -->
-    <section class="section" id="products">
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="men">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>{{ $category->name }}</h2>
-                        <span>{!! $category->description !!}</span>
+                @foreach ($header_cover  as $cover)
+                    <div class="col-lg-4">
+                        <div class="car_image_container">
+                            @if($cover -> car -> status == 'محجوزة')
+                                <div class="car_status text-center"><span class="car_status_text">محجوزة</span></div>
+                            @endif
+                            <img class="img-thumbnail" src="{{ asset('storage'.DIRECTORY_SEPARATOR.$cover->image_path.DIRECTORY_SEPARATOR.$cover->image_name) }}" alt="{{ $cover->image_name }}">
+                        </div>
+                        <div class="section-heading">
+                            <h6 class="text-center"><a href="{{ route('site.car.show', $cover -> car -> id) }}">{{ $cover -> car -> name }}</a></h6>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $header_cover -> links() }}
             </div>
         </div>
     </section>
-    <!-- ***** Products Area Ends ***** -->
-
+    <!-- ***** Men Area Ends ***** -->
 @endsection
 @push('links')
     <link rel="stylesheet" href={{ asset('assets/slider/dist/css/slider-pro.min.css') }} />
