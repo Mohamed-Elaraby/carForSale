@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <!-- start Slider -->
     <div id="car_image" class="slider-pro">
         <div class="sp-slides">
@@ -141,7 +141,7 @@
                     <td colspan="2" class="text-center"><h4>{{ __('trans.price') }}</h4></td>
                 </tr>
                 <tr>
-                    <th>{{ $car -> price .' '. $site_currency }} </th>
+                    <th>{{ $car -> price .' '. $site_currency -> currency ?? '' }} </th>
                     <td>{{ $car -> price_status }}</td>
                 </tr>
             </table>

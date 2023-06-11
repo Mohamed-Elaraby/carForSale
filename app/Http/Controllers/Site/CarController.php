@@ -17,7 +17,7 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $gallery = Gallery::whereNull('location')->where('car_id', $car -> id)->get();
         $specifications = Specification::whereHas('cars', function ($q)use ($car){$q -> where('car_id', $car -> id);})->get();
-        $site_currency = Setting::first()->currency ;
+        $site_currency = Setting::first();
         return view('site.car', compact('car', 'gallery', 'specifications', 'site_currency'));
     }
 }
