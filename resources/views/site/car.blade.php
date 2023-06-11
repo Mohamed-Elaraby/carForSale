@@ -28,7 +28,8 @@
         </div>
     </div>
     <!-- end slider -->
-
+</div>
+<div class="container">
     <!-- start car information -->
 
     <hr>
