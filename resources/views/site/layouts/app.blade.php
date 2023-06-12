@@ -27,7 +27,7 @@
 
 <body>
 
-<a href="tel:+966532228180" class="call_button">
+<a href="tel:+920003745" class="call_button">
     <span class="call_button_container">
         <i class="fa fa-phone"></i>
     </span>
