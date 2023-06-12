@@ -6,6 +6,7 @@
                     <!-- ***** Logo Start ***** -->
                     <a href="{{ route('site.home') }}" class="logo">
                         <img src="{{ asset('storage/logo200x100.png') }}" width="150" height="80px">
+{{--                        <img src="{{ asset('storage/logo200x100.png') }}" width="150" height="80px">--}}
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
